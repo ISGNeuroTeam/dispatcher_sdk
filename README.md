@@ -16,10 +16,12 @@ OpenJDK version 1.8.0_212
 
     `libraryDependencies += "dispatcher" % "dispatcher-sdk_2.11" % "sdk_version"  % Compile
     `       
+    
+    In order to avoid missed dependency publishLocal by sbt this project before. 
 2. Extend your command class from `ot.dispatcher.sdk.PluginCommand` class and realise
    transform method.
     ```
-    MyCommand(query: SimpleQuery, utils: PluginUtils) extends PluginCommand(sq, utils, Set("from", "to")){
+    MyCommand(sq: SimpleQuery, utils: PluginUtils) extends PluginCommand(sq, utils, Set("from", "to")){
         def transform(_df: DataFrame): DataFrame = {
              /* some dataframe transformations*/
         }
