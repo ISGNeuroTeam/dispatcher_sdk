@@ -23,7 +23,6 @@ pipeline {
         stage ('Delivery'){
             steps{
                 script{
-                 env.FILE_NAME = sh(script:'basename `ls target/sca*/*jar`', returnStdout: true).trim()
                  sh '''
 			sbt publish
                       '''
@@ -37,7 +36,7 @@ pipeline {
             step([$class: 'GitHubCommitStatusSetter'])
        }
        success {
-            sh '''echo FIND $FILE_NAME IN $NEXUS_REPO_URL/repository/components/'''
+            sh '''echo Find package in $NEXUS_REPO_URL/repository/components/ot.platform-sbt'''
     }
 }
 }
