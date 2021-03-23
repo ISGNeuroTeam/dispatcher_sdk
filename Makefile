@@ -39,6 +39,7 @@ package:
 	# Addition section
 	echo Package
 	sbt package
+	touch package
 
 build: package publish 
 
