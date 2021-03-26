@@ -36,7 +36,7 @@ pipeline {
             step([$class: 'GitHubCommitStatusSetter'])
        }
        success {
-            sh '''echo Find package in $NEXUS_REPO_URL/repository/components/ot.platform-sbt'''
+            sh '''echo Find package in $NEXUS_REPO_URL/repository/components/ot.platform-sbt-releases'''
     }
 }
 }
