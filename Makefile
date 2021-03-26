@@ -34,13 +34,6 @@ export ANNOUNCE_BODY
 all:
 	echo "$$ANNOUNCE_BODY"
 
-pack: build
-	$(SET_VERSION)
-	$(SET_BRANCH)
-	$(SET_PROJECT_NAME_LOW_CASE)
-	rm -f $(PROJECT_NAME_LOW_CASE)-$(VERSION)-$(BRANCH).tar.gz
-	echo Create archive \"$(PROJECT_NAME_LOW_CASE)-$(VERSION)-$(BRANCH).tar.gz\"
-	cd build; tar czf ../$(PROJECT_NAME_LOW_CASE)-$(VERSION)-$(BRANCH).tar.gz .
 
 package:
 	# Addition section
@@ -48,28 +41,14 @@ package:
 	sbt package
 	touch package
 
-build: package publish
-	# required section
-	echo Build
-	$(SET_VERSION)
-	$(SET_SCALA_VERSION)
-	$(SET_PROJECT_NAME)
-	$(SET_PROJECT_NAME_LOW_CASE)
-	mkdir build
-	mkdir build/$(PROJECT_NAME)
-	mkdir build/$(PROJECT_NAME)/jars
-	mkdir -p build/$(PROJECT_NAME)/jars/ot.$(PROJECT_NAME_LOW_CASE)/$(PROJECT_NAME_LOW_CASE)_$(SCALA_VERSION)
-	cp target/scala-$(SCALA_VERSION)/$(PROJECT_NAME_LOW_CASE)_$(SCALA_VERSION)-$(VERSION).jar build/$(PROJECT_NAME)/jars/ot.$(PROJECT_NAME_LOW_CASE)/$(PROJECT_NAME_LOW_CASE)_$(SCALA_VERSION)/
-	cp README.md build/$(PROJECT_NAME)/
-	cp CHANGELOG.md build/$(PROJECT_NAME)/
-	cp LICENSE.md build/$(PROJECT_NAME)/
+build: package publish 
 
 clean:
 	# required section
 	$(SET_VERSION)
 	$(SET_SCALA_VERSION)
 	$(SET_PROJECT_NAME_LOW_CASE)
-	rm -rf build $(PROJECT_NAME_LOW_CASE)-*.tar.gz package publish project target
+	rm -rf $(PROJECT_NAME_LOW_CASE)-*.tar.gz  publish project target
 
 test:
 	# required section
