@@ -67,5 +67,5 @@ object CustomException{
   val E00026 = (searchId: Integer, message: String) =>                                      CustomException(26, searchId, s"Exception in Scala inline. Message:\n$message", List())
   val E00027 = (searchId: Integer, message: String) =>                                      CustomException(27, searchId, s"Unknown exception in Scala inline.\n$message", List())
   val E00028 = (searchId: Integer) =>                                                       CustomException(28, searchId, "collect_list, collect_set and java_method are not allowed", List())
-  val E00029 = (searchId: Integer, message: String) =>                                      CustomException(29, searchId, message, List())
+  val E00029 = (searchId: Integer, message: String) =>                                      CustomException(29, searchId, s"Spark inline execution error:\n$message", List())
 }
