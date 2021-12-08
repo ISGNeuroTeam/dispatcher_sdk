@@ -1,15 +1,15 @@
 package ot.dispatcher.sdk.test
 
 import java.io.{File, PrintWriter}
-
 import org.apache.log4j.Logger
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.BeforeAndAfterAll
 import ot.dispatcher.sdk.PluginCommand
 
 import scala.reflect.io.Directory
 
-abstract class CommandTest extends FunSuite with BeforeAndAfterAll {
+abstract class CommandTest extends AnyFunSuite with BeforeAndAfterAll {
 
   val log: Logger = Logger.getLogger("TestLogger")
 
