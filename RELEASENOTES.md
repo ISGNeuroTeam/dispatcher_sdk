@@ -1,3 +1,7 @@
+# [1.2.1]
+### Changed
+- Minor update to README.md.
+
 # [1.2.0] - Meet the exception handling helper class!
 ### New
 Please, use the brand new CustomException class to achieve exception localization in your command.
