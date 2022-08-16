@@ -54,9 +54,9 @@ object CustomException{
   val E00017 = (searchId: Integer) =>                                                       CustomException(17, searchId, "Search was canceled because of timeout.", List())
   val E00018 = (searchId: Integer, commandName: String) =>                                  CustomException(18, searchId, s"Command $commandName requires 'bins' or 'span' argument", List(commandName,"'bins','span'"))
   val E00019 = (searchId: Integer, commandName: String) =>                                  CustomException(19, searchId, "Required argument 'index' not found",List(commandName, "index"))
-  val E00020 = (searchId: Integer, commandName: String) =>                                  CustomException(20, searchId, s"Command $commandName shoud have at least one argument", List(commandName))
+  val E00020 = (searchId: Integer, commandName: String) =>                                  CustomException(20, searchId, s"Command $commandName should have at least one argument", List(commandName))
   val E00021 = (searchId: Integer) =>                                                       CustomException(21, searchId, "Parameter 'center' should have one of values: [true,false]", List())
-  val E00022 = (searchId: Integer, commandName: String) =>                                  CustomException(22, searchId, s"Command $commandName shoud have at least one expression", List(commandName))
+  val E00022 = (searchId: Integer, commandName: String) =>                                  CustomException(22, searchId, s"Command $commandName should have at least one expression", List(commandName))
 
   /**
    * Exceptions defined for Interpreted Inlines Plugin
