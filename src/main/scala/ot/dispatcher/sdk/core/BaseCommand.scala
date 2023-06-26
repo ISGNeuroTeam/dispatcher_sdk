@@ -2,6 +2,8 @@ package ot.dispatcher.sdk.core
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.lit
+import ot.dispatcher.sdk.core.Positional
 import ot.dispatcher.sdk.core.parsers.DefaultParser
 import ot.dispatcher.sdk.core.extensions.StringExt._
 
@@ -14,7 +16,7 @@ abstract class BaseCommand(sq: SimpleQuery, seps: Set[String] = Set.empty) exten
   val positionalsMap = fieldsToMap(positionals)
   val returns = returnsParser(args, seps)
 
-  def fieldsUsed = getFieldsUsed(returns)
+  def fieldsUsed = (getFieldsUsed(returns) ++ (positionalsMap.values.toList.flatMap(f => f.asInstanceOf[Positional].values))).distinct
   def fieldsGenerated = getFieldsGenerated(returns)
 
   var fieldsUsedInFullQuery = Seq[String]()
