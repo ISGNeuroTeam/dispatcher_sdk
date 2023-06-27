@@ -1,11 +1,8 @@
 package ot.dispatcher.sdk.core
 
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.functions.lit
-import ot.dispatcher.sdk.core.Positional
-import ot.dispatcher.sdk.core.parsers.DefaultParser
+import org.apache.log4j.Logger
 import ot.dispatcher.sdk.core.extensions.StringExt._
+import ot.dispatcher.sdk.core.parsers.DefaultParser
 
 abstract class BaseCommand(sq: SimpleQuery, seps: Set[String] = Set.empty) extends DefaultParser {
   val args = sq.args
