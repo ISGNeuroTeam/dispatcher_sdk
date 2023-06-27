@@ -1,9 +1,8 @@
 package ot.dispatcher.sdk.core
 
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.DataFrame
-import ot.dispatcher.sdk.core.parsers.DefaultParser
+import org.apache.log4j.Logger
 import ot.dispatcher.sdk.core.extensions.StringExt._
+import ot.dispatcher.sdk.core.parsers.DefaultParser
 
 abstract class BaseCommand(sq: SimpleQuery, seps: Set[String] = Set.empty) extends DefaultParser {
   val args = sq.args
@@ -14,7 +13,7 @@ abstract class BaseCommand(sq: SimpleQuery, seps: Set[String] = Set.empty) exten
   val positionalsMap = fieldsToMap(positionals)
   val returns = returnsParser(args, seps)
 
-  def fieldsUsed = getFieldsUsed(returns)
+  def fieldsUsed = (getFieldsUsed(returns) ++ (positionalsMap.values.toList.flatMap(f => f.asInstanceOf[Positional].values))).distinct
   def fieldsGenerated = getFieldsGenerated(returns)
 
   var fieldsUsedInFullQuery = Seq[String]()
