@@ -43,6 +43,6 @@ abstract class BaseCommand(sq: SimpleQuery, seps: Set[String] = Set.empty) exten
 
   def getKeywords(): Map[String, String] = keywords.map{case Keyword(k,v) => k -> v}.toMap
 
-  def mainArgs: List[String] = fieldsUsed.map(_.stripBackticks())
+  def mainArgs: List[String] = getFieldsUsed(returns).map(_.stripBackticks())
 
 }
